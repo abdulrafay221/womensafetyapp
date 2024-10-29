@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Helpline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #f0f9ff; /* Soft light background for a calming effect */
+            font-family: 'Roboto', sans-serif; /* Modern font */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .container {
+            background: #ffffff; /* White background for contrast */
+            border-radius: 8px; /* Rounded corners for the container */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            padding: 2rem;
+            max-width: 400px; /* Limit width for better readability */
+            text-align: center; /* Center text */
+        }
+        .button {
+            display: block; /* Block display for full-width buttons */
+            width: 100%; /* Full width */
+            padding: 1rem; /* Ample padding */
+            margin-top: 1rem; /* Space between buttons */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 1.1rem; /* Slightly larger font for readability */
+            color: #ffffff; /* White text color */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+        .button:hover {
+            opacity: 0.8; /* Slightly transparent on hover */
+        }
+        .helpline {
+            margin-top: 20px;
+            font-size: 1.2rem; /* Larger font for helpline display */
+            font-weight: bold; /* Bold font */
+            color: #333; /* Dark color for visibility */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-2xl font-bold">Emergency Helpline</h1>
+        
+        <button onclick="callNumber('+1234567890', 'Women In Distress')" class="button bg-green-500">Women In Distress</button>
+        <button onclick="callNumber('+0987654321', 'Domestic Abuse')" class="button bg-red-500">Domestic Abuse</button>
+        <button onclick="callNumber('+1122334455', 'Police')" class="button bg-blue-500">Police</button>
+        <button onclick="callNumber('+5566778899', 'Student / Child Helpline')" class="button bg-yellow-500">Student / Child Helpline</button>
+        <button onclick="callNumber('+9988776655', 'Ambulance')" class="button bg-purple-500">Ambulance</button>
+        
+        <div id="helplineDisplay" class="helpline"></div>
+    </div>
+
+    <script>
+        function callNumber(number, service) {
+            // Display the helpline number
+            const helplineDisplay = document.getElementById('helplineDisplay');
+            helplineDisplay.textContent = `Helpline Number: ${number}`;
+            
+            // Call after 2 seconds
+            setTimeout(() => {
+                console.log(`Calling ${service} at ${number}`);
+                window.location.href = `tel:${number}`;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

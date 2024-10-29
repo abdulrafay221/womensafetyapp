@@ -1,0 +1,177 @@
+<html>
+<head>
+    <title>Women-Safety App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #e0f7e9;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            position: relative;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 50%;
+            background-color: #ffeb3b;
+            border-bottom-right-radius: 50%;
+        }
+        .header h1 {
+            position: relative;
+            font-size: 2.5rem;
+            color: #00796b;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 2rem;
+        }
+        .card i {
+            font-size: 2.5rem;
+            color: #3f51b5;
+        }
+        .card p {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #616161;
+        }
+        .panic-button {
+            display: block;
+            width: 80%;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: #ff4081;
+            color: white;
+            text-align: center;
+            border-radius: 2rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Women Safety App</h1>
+    </div>
+    <div class="grid-container">
+        <a href="numm but.html" class="card">
+            <i class="fas fa-id-badge"></i>
+            <p>CONTACT</p>
+        </a>
+        <a href="sos.html" class="card">
+            <i class="fas fa-sms"></i>
+            <p>SMS ALERT</p>
+        </a>
+        <a href="laws.html" class="card">
+            <i class="fas fa-balance-scale"></i>
+            <p>WOMEN LAWS</p>
+        </a>
+        <a href="slef def.html" class="card">
+            <i class="fas fa-user-shield"></i>
+            <p>SELF DEFENSE</p>
+        </a>
+    </div>
+</body>
+<title>Panic Button</title>
+<style>
+    .panic-button {
+      background-color: #ff3b3b; /* Bright red for visibility */
+      color: white;
+      padding: 15px 30px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px; /* Rounded corners for a softer look */
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(255, 59, 59, 0.5); /* Adds depth */
+      transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    }
+  
+    .panic-button:hover {
+      background-color: #ff1c1c; /* Darker red on hover */
+    }
+  
+    .panic-button:active {
+      transform: scale(0.95); /* Slightly scales down when clicked */
+    }
+  
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .panic-button {
+        padding: 12px 24px; /* Smaller padding for tablets */
+        font-size: 18px; /* Slightly smaller font size */
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .panic-button {
+        padding: 10px 20px; /* Smaller padding for mobile */
+        font-size: 16px; /* Further reduced font size */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#" class="panic-button" onclick="triggerSOS()">PANIC</a>
+<script>
+    async function triggerSOS() {
+      const name = "User's Name";
+      const phoneNumber = "+1234567890"; // User's phone number
+      const emergencyContact = "+0987654321"; // Emergency contact number
+  
+      // Get user location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const location = `Lat: ${position.coords.latitude}, Lon: ${position.coords.longitude}`;
+  
+          try {
+            const response = await fetch('http://localhost:5000/api/panic', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name, phoneNumber, emergencyContact, location })
+            });
+  
+            const data = await response.json();
+            alert(data.message);
+          } catch (error) {
+            alert("Error triggering SOS alert");
+          }
+        });
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+    
+  </script>
+  <a href="#" class="panic-button" onclick="triggerSOS()">🚨 PANIC</a>
+
+  <script>
+    function triggerSOS() {
+      alert("SOS Alert Sent! Stay Calm, Help is On the Way.");
+      // Add your SOS functionality here
+    }
+  </script>
+</body>
+</html>
